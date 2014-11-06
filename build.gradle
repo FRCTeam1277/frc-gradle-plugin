@@ -1,0 +1,25 @@
+plugins
+{
+	id 'groovy'
+	id 'nu.studer.plugindev' version '1.0.3'
+}
+
+group = 'org.team1277.frc.gradle'
+version = '1.0.0'
+
+plugindev {
+	pluginImplementationClass 'org.team1277.frc.gradle.FRCPlugin'
+	pluginDescription 'Gradle plugin for FRC builds'
+	pluginLicenses 'Apache-2.0'
+	pluginTags 'gradle', 'plugin', 'frc'
+	authorId 'roguePanda'
+	authorName 'Ben Navetta'
+	authorEmail 'ben.navetta@gmail.com'
+	projectUrl 'https://github.com/FRCTeam1277/frc-gradle-plugin'
+	projectInceptionYear '2014'
+	done()
+}
+
+wrapper {
+	gradleVersion = 2.1
+}
