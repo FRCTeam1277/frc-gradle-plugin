@@ -1,0 +1,23 @@
+// vim: set ft=groovy :
+
+buildscript {
+	repositories {
+		flatDir {
+			dirs '../build/libs'
+		}
+	}
+
+	dependencies {
+		classpath ':frc-gradle-plugin:1.0.0'
+	}
+}
+
+apply plugin: 'org.team1277.frc'
+
+frc {
+	teamNumber = 1277
+}
+
+wrapper {
+	gradleVersion = '2.2-rc-2'
+}

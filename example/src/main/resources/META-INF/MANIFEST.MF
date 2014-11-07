@@ -1,0 +1,6 @@
+MIDlet-Name: ExampleRobot
+MIDlet-Version: 1.0.0
+MIDlet-Vendor: FIRST
+MIDlet-1: ExampleRobot, , org.team1277.frc.ExampleRobot
+MicroEdition-Profile: IMP-1.0
+MicroEdition-Configuration: CLDC-1.1

@@ -1,6 +1,8 @@
-plugins
-{
+// vim: set ft=groovy :
+
+plugins {
 	id 'groovy'
+	id 'idea'
 	id 'nu.studer.plugindev' version '1.0.3'
 }
 
@@ -8,6 +10,8 @@ group = 'org.team1277.frc.gradle'
 version = '1.0.0'
 
 plugindev {
+	pluginId 'org.team1277.frc'
+	pluginName 'gradle-frc-plugin'
 	pluginImplementationClass 'org.team1277.frc.gradle.FRCPlugin'
 	pluginDescription 'Gradle plugin for FRC builds'
 	pluginLicenses 'Apache-2.0'
@@ -21,5 +25,5 @@ plugindev {
 }
 
 wrapper {
-	gradleVersion = 2.1
+	gradleVersion = '2.2-rc-2'
 }
