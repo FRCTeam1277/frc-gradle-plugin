@@ -4,3 +4,28 @@
 
 Uses Gradle to support building FRC projects, mainly from Eclipse since the FRC
 SDK won't have Eclipse support until January 2015.
+
+### Usage
+
+```groovy
+
+You must have the FRC SDK (`~/sunspotfrcsdk`) installed via Netbeans. See
+[WPI's documentation](http://wpilib.screenstepslive.com/s/3120/m/7885/l/79405-installing-the-java-development-tools)
+for help. This plugin will configure your `~/.sunspotfrc.properties` file
+appropriately, set Java compatibility versions, and import the FRC build tasks. It will also add dependencies on
+the FRC libraries and set up the `build` task to depend on the FRC jar task.
+If the Eclipse plugin is applied, this will also set up source and Javadoc
+locations.
+
+plugins {
+	id "eclipse"
+	id "org.team1277.frc" version "1.0.1"
+}
+
+frc {
+    teamNumber = 1277
+}
+
+```
+
+
