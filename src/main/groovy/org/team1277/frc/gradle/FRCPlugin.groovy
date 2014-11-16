@@ -62,7 +62,7 @@ class FRCPlugin implements Plugin<Project>
 		project.tasks.all { Task task ->
 			if(task.name.startsWith('frc-'))
 			{
-				task.group = 'FRC Build'
+				task.group = FRC_GROUP
 			}
 		}
 
