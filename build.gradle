@@ -24,6 +24,20 @@ plugindev {
 	done()
 }
 
+bintray {
+	if(project.hasProperty('bintrayUser'))
+	{
+		user = project.property('bintrayUser')
+	}
+
+	if(project.hasProperty('bintrayKey'))
+	{
+		apiKey = project.property('bintrayKey')
+	}
+
+	pkg.repo = 'gradle-plugins'
+}
+
 wrapper {
 	gradleVersion = '2.2'
 }
