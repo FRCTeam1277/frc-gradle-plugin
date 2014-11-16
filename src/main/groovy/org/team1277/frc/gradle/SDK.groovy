@@ -28,9 +28,19 @@ class SDK
 		return file('build.xml')
 	}
 
+	public Path getLibDir()
+	{
+		return file("lib")
+	}
+
+	public List<String> getLibraryNames()
+	{
+		return ["networktables-crio", "squawk", "wpilibj"]
+	}
+
 	public List<Path> getLibraries()
 	{
-		return ['networktables-crio.jar', 'squawk.jar', 'wpilibj.jar'].collect { file("lib/$it") }
+		return libraryNames.collect { libDir.resolve("${it}.jar") }
 	}
 
 	public Path getJavadoc()

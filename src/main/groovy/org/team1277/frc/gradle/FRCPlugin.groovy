@@ -2,6 +2,7 @@ package org.team1277.frc.gradle;
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.tasks.SourceSet
 
 class FRCPlugin implements Plugin<Project>
@@ -24,6 +25,10 @@ class FRCPlugin implements Plugin<Project>
 		{
 			createConfigureSdkPropertiesTask(project)
 		}
+
+		FRCDependencies deps = new FRCDependencies(sdk)
+		deps.addRepository(project.repositories)
+		deps.addDependencies(project.configurations.getByName(JavaPlugin.COMPILE_CONFIGURATION_NAME), project.dependencies)
 	}
 
 	private void importBuild(Project project)
@@ -55,7 +60,6 @@ class FRCPlugin implements Plugin<Project>
 		task.conventionMapping.map('sdk', {
 			extension.sdk
 		})
-
 	}
 }
 
