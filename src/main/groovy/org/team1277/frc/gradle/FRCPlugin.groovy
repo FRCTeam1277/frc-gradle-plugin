@@ -2,6 +2,8 @@ package org.team1277.frc.gradle;
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.Task
+import org.gradle.api.plugins.JavaBasePlugin
 import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.tasks.SourceSet
 import org.gradle.plugins.ide.eclipse.EclipsePlugin
@@ -56,6 +58,15 @@ class FRCPlugin implements Plugin<Project>
 		project.ant.importBuild(sdk.antFile.toFile()) {
 			return 'frc-' + it
 		}
+
+		project.tasks.all { Task task ->
+			if(task.name.startsWith('frc-'))
+			{
+				task.group = 'FRC Build'
+			}
+		}
+
+		project.tasks.getByName(JavaBasePlugin.BUILD_TASK_NAME).dependsOn 'frc-jar-app'
 	}
 
 	private void createConfigureSdkPropertiesTask(Project project)
