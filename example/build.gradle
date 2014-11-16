@@ -13,11 +13,12 @@ buildscript {
 }
 
 apply plugin: 'org.team1277.frc'
+apply plugin: 'eclipse'
 
 frc {
 	teamNumber = 1277
 }
 
 wrapper {
-	gradleVersion = '2.2-rc-2'
+	gradleVersion = '2.2'
 }

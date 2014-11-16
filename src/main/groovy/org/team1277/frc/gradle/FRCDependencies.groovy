@@ -28,7 +28,7 @@ class FRCDependencies
 	public void addDependencies(Configuration configuration, DependencyHandler dependencyHandler)
 	{
 		sdk.libraryNames.each {
-			configuration.dependencies.add(dependencyHandler.create(it))
+			configuration.dependencies.add(dependencyHandler.create(":$it:"))
 		}
 	}
 }

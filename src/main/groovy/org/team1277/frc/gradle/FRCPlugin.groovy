@@ -4,6 +4,8 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.tasks.SourceSet
+import org.gradle.plugins.ide.eclipse.EclipsePlugin
+import org.gradle.plugins.ide.eclipse.model.EclipseModel
 
 class FRCPlugin implements Plugin<Project>
 {
@@ -31,6 +33,10 @@ class FRCPlugin implements Plugin<Project>
 		FRCDependencies deps = new FRCDependencies(sdk)
 		deps.addRepository(project.repositories)
 		deps.addDependencies(project.configurations.getByName(JavaPlugin.COMPILE_CONFIGURATION_NAME), project.dependencies)
+
+		project.plugins.withId('eclipse') {
+			new EclipseConfigurer(sdk).configure(project.extensions.getByType(EclipseModel))
+		}
 
 		//TODO: disable default java tasks?
 	}
