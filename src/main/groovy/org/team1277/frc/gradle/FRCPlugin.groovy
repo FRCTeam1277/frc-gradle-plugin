@@ -16,6 +16,8 @@ class FRCPlugin implements Plugin<Project>
 	void apply(Project project)
 	{
 		project.plugins.apply('java')
+		project.sourceCompatibility = 1.3
+		project.targetCompatibility = 1.2
 
 		sdk = SDK.detect()
 		extension = project.extensions.create("frc", FRCExtension, sdk)
@@ -29,6 +31,8 @@ class FRCPlugin implements Plugin<Project>
 		FRCDependencies deps = new FRCDependencies(sdk)
 		deps.addRepository(project.repositories)
 		deps.addDependencies(project.configurations.getByName(JavaPlugin.COMPILE_CONFIGURATION_NAME), project.dependencies)
+
+		//TODO: disable default java tasks?
 	}
 
 	private void importBuild(Project project)
