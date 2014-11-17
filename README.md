@@ -43,3 +43,11 @@ buildscript {
 apply plugin: 'org.team1277.frc'
 
 ```
+
+If `frc.configureSdkProperties` is set to false, the `~/.sunspotfrc.properties`
+file will not be configured. This means that the SDK must have been configured
+through Netbeans instead. The `frc` extension also provides a read-only
+`remoteAddress` property with the robot IP address (i.e. `10.12.77.2`).
+
+The detected [SDK](src/main/groovy/org/team1277/frc/gradle/SDK.groovy) is
+exposed under `frc.sdk`.
