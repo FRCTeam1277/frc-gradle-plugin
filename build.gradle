@@ -42,7 +42,7 @@ bintray {
 		issueTrackerUrl = 'https://github.com/FRCTeam1277/frc-gradle-plugin/issues'
 		vcsUrl = 'https://github.com/FRCTeam1277/frc-gradle-plugin.git'
 		licenses = ['Apache-2.0']
-		labels = ['gradle']
+		labels = ['gradle', 'frc', 'robotics', 'first']
 	}
 }
 
