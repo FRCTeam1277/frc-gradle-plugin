@@ -26,4 +26,20 @@ frc {
 }
 ```
 
+Or to use with Gradle versions before 2.1:
 
+```groovy
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.team1277.frc.gradle:gradle-frc-plugin:1.0.1'
+    }
+}
+
+apply plugin: 'org.team1277.frc'
+
+```
