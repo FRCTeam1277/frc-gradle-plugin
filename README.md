@@ -1,4 +1,4 @@
-## frc-gradle-plugin
+## gradle-frc-plugin
 
 [![Download](https://api.bintray.com/packages/ben-navetta/gradle-plugins/gradle-frc-plugin/images/download.svg)](https://bintray.com/ben-navetta/gradle-plugins/gradle-frc-plugin/_latestVersion)
 
