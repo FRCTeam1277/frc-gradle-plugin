@@ -8,7 +8,7 @@ buildscript {
 	}
 
 	dependencies {
-		classpath ':frc-gradle-plugin:1.0.0'
+		classpath ':gradle-frc-plugin:1.0.1'
 	}
 }
 
