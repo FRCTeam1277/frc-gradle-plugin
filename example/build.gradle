@@ -17,6 +17,7 @@ apply plugin: 'eclipse'
 
 frc {
 	teamNumber = 1277
+	robotClass = 'org.team1277.frc.ExampleRobot'
 }
 
 wrapper {

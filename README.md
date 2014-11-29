@@ -23,6 +23,8 @@ plugins {
 
 frc {
     teamNumber = 1277
+
+    robotClass = 'org.team1277.Robot'
 }
 ```
 
@@ -52,10 +54,15 @@ through Netbeans instead. The `frc` extension also provides a read-only
 The detected [SDK](src/main/groovy/org/team1277/frc/gradle/SDK.groovy) is
 exposed under `frc.sdk`.
 
+### Emulator
+
+This plugin has support for the [FRC Robot Emulator](https://github.com/itsZN/FRC-Robot-Emulator) developed by a team
+member. The `downloadEmulator` task will download the latest released emulator version and the emulator cam be run via
+the `emulator` task. To enable debugging, pass `--debug-jvm` on the Gradle command line. Note that the `frc.robotClass`
+property must be set.
+
 ## TODO
 
-* Add support for Nick's emulator. I should stick it in Bintray for downloading,
-  and there should also be a debug variant of the task
 * Create a separate sample project that people can clone and rename. It should
   also have instructions for importing to Eclipse.
 * Maybe add networking support. Check if it's Windows or OS X and run the

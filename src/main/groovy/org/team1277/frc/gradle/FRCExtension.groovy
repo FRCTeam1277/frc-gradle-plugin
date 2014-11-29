@@ -29,6 +29,11 @@ class FRCExtension
 	int teamNumber
 
 	/**
+	 * The main robot class (i.e. {@code org.team1277.Robot})
+	 */
+	String robotClass
+
+	/**
 	 * The remote address of the robot (i.e. 10.12.77.2)
 	 * @return
 	 */

@@ -1,18 +1,23 @@
-package org.team1277.frc.gradle;
+package org.team1277.frc.gradle
 
+import org.gradle.api.GradleException;
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.Task
 import org.gradle.api.plugins.JavaBasePlugin
 import org.gradle.api.plugins.JavaPlugin
+import org.gradle.api.tasks.JavaExec
 import org.gradle.api.tasks.SourceSet
 import org.gradle.plugins.ide.eclipse.EclipsePlugin
 import org.gradle.plugins.ide.eclipse.model.EclipseModel
+import org.gradle.wrapper.GradleUserHomeLookup
 
 class FRCPlugin implements Plugin<Project>
 {
 	public static final String FRC_GROUP = "FRC"
 	public static final String CONFIGURE_SDK_PROPERTIES_TASK_NAME = "configureSdkProperties"
+	public static final String DOWNLOAD_EMULATOR_TASK_NAME = "downloadEmulator"
+	public static final String EMULATOR_TASK_NAME = 'emulator'
 
 	private SDK sdk
 	private FRCExtension extension
@@ -26,18 +31,22 @@ class FRCPlugin implements Plugin<Project>
 		sdk = SDK.detect()
 		extension = project.extensions.create("frc", FRCExtension, sdk)
 
-		importBuild(project)
-		if(extension.configureSdkProperties)
-		{
-			createConfigureSdkPropertiesTask(project)
-		}
+		project.afterEvaluate {
+			importBuild(project)
+			if(extension.configureSdkProperties)
+			{
+				createConfigureSdkPropertiesTask(project)
+			}
 
-		FRCDependencies deps = new FRCDependencies(sdk)
-		deps.addRepository(project.repositories)
-		deps.addDependencies(project.configurations.getByName(JavaPlugin.COMPILE_CONFIGURATION_NAME), project.dependencies)
+			FRCDependencies deps = new FRCDependencies(sdk)
+			deps.addRepository(project.repositories)
+			deps.addDependencies(project.configurations.getByName(JavaPlugin.COMPILE_CONFIGURATION_NAME), project.dependencies)
 
-		project.plugins.withId('eclipse') {
-			new EclipseConfigurer(sdk).configure(project.extensions.getByType(EclipseModel))
+			project.plugins.withId('eclipse') {
+				new EclipseConfigurer(sdk).configure(project.extensions.getByType(EclipseModel))
+			}
+
+			configureEmulator(project)
 		}
 
 		//TODO: disable default java tasks?
@@ -81,6 +90,28 @@ class FRCPlugin implements Plugin<Project>
 		task.conventionMapping.map('sdk', {
 			extension.sdk
 		})
+	}
+
+	private void configureEmulator(Project project)
+	{
+		if(extension.robotClass == null)
+		{
+			throw new GradleException("frc.robotClass not specified")
+		}
+
+		SourceSet main = project.sourceSets[SourceSet.MAIN_SOURCE_SET_NAME]
+
+		DownloadEmulator downloadTask = project.tasks.create(DOWNLOAD_EMULATOR_TASK_NAME, DownloadEmulator)
+		downloadTask.group = FRC_GROUP
+		downloadTask.description = 'Download a FRC emulator'
+
+		JavaExec runTask = project.tasks.create(EMULATOR_TASK_NAME, JavaExec)
+		runTask.dependsOn(downloadTask)
+		runTask.dependsOn(JavaPlugin.JAR_TASK_NAME)
+		runTask.classpath(downloadTask.emulatorFile)
+		runTask.classpath(main.runtimeClasspath)
+		runTask.main 'emulator.RobotEmulator'
+		runTask.args extension.robotClass
 	}
 }
 
