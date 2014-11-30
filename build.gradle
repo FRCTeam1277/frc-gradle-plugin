@@ -19,7 +19,7 @@ plugindev {
 	authorId 'roguePanda'
 	authorName 'Ben Navetta'
 	authorEmail 'ben.navetta@gmail.com'
-	projectUrl 'https://github.com/FRCTeam1277/frc-gradle-plugin'
+	projectUrl 'https://github.com/FRCTeam1277/gradle-frc-plugin'
 	projectInceptionYear '2014'
 	done()
 }
@@ -38,9 +38,9 @@ bintray {
 	pkg {
 		repo = 'gradle-plugins'
 		desc = 'Gradle support for building FRC control software'
-		websiteUrl = 'https://github.com/FRCTeam1277/frc-gradle-plugin'
-		issueTrackerUrl = 'https://github.com/FRCTeam1277/frc-gradle-plugin/issues'
-		vcsUrl = 'https://github.com/FRCTeam1277/frc-gradle-plugin.git'
+		websiteUrl = 'https://github.com/FRCTeam1277/gradle-frc-plugin'
+		issueTrackerUrl = 'https://github.com/FRCTeam1277/gradle-frc-plugin/issues'
+		vcsUrl = 'https://github.com/FRCTeam1277/gradle-frc-plugin.git'
 		licenses = ['Apache-2.0']
 		labels = ['gradle', 'frc', 'robotics', 'first']
 	}
