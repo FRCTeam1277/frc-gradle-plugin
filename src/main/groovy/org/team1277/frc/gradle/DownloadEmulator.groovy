@@ -13,6 +13,11 @@ class DownloadEmulator extends DefaultTask
 {
 	static final String EMULATOR_LOCATION = 'https://dl.dropboxusercontent.com/u/54680365/frcEmulator/frcEmulator.jar'
 
+	DownloadEmulator()
+	{
+		onlyIf { !getEmulatorFile().exists() }
+	}
+
 	@OutputFile
 	public File getEmulatorFile()
 	{
