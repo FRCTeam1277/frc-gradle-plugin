@@ -8,7 +8,7 @@ buildscript {
 	}
 
 	dependencies {
-		classpath ':gradle-frc-plugin:1.1.1'
+		classpath ':gradle-frc-plugin:1.1.2'
 	}
 }
 
@@ -18,8 +18,10 @@ apply plugin: 'eclipse'
 frc {
 	teamNumber = 1277
 	robotClass = 'org.team1277.frc.ExampleRobot'
+
+	configureSdkProperties = true
 }
 
 wrapper {
-	gradleVersion = '2.2'
+	gradleVersion = '2.2.1'
 }

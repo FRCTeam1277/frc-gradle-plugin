@@ -33,10 +33,7 @@ class FRCPlugin implements Plugin<Project>
 
 		project.afterEvaluate {
 			importBuild(project)
-			if(extension.configureSdkProperties)
-			{
-				createConfigureSdkPropertiesTask(project)
-			}
+			createConfigureSdkPropertiesTask(project)
 
 			FRCDependencies deps = new FRCDependencies(sdk)
 			deps.addRepository(project.repositories)
@@ -83,6 +80,7 @@ class FRCPlugin implements Plugin<Project>
 		ConfigureSDKProperties task = project.tasks.create(CONFIGURE_SDK_PROPERTIES_TASK_NAME, ConfigureSDKProperties)
 		task.group = FRC_GROUP
 		task.description = 'Configure the FRC SDK properties'
+		task.enabled = extension.configureSdkProperties
 
 		task.conventionMapping.map('remoteAddress', {
 			extension.remoteAddress
