@@ -1,3 +1,9 @@
+## DEPRECATED
+
+The 2015 FRC suite includes a [Java
+plugin](http://wpilib.screenstepslive.com/s/4485/m/13809/l/145002-installing-eclipse-c-java).
+This should be used instead, since it supports the new tools and build system.
+
 ## gradle-frc-plugin
 
 [![Download](https://api.bintray.com/packages/ben-navetta/gradle-plugins/gradle-frc-plugin/images/download.svg)](https://bintray.com/ben-navetta/gradle-plugins/gradle-frc-plugin/_latestVersion)
